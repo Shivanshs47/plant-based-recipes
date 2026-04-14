@@ -10,7 +10,7 @@ Live Demo => https://shivanshs47.github.io/plant-based-recipes/
 
 ## Project Structure
 
-
+```
 greenplate/
 │
 ├── index.html              ← Home page
@@ -27,7 +27,7 @@ greenplate/
     ├── submit.html         ← Share a new recipe form
     └── about.html          ← About page with SQL schema docs
 
-
+```
 ---
 
 ## How to Run
