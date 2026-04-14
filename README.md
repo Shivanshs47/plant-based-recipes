@@ -4,7 +4,7 @@ A fully client-side web application for discovering and sharing plant-based, sus
 
 ---
 
-Live Demo => https://shivanshs47.github.io/plant-based-recipes/ 
+Live Demo → https://shivanshs47.github.io/plant-based-recipes/ 
 
 ---
 
