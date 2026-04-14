@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Share a Recipe — GreenPlate</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Emoji Picker Styles */
+    .emoji-picker {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.8rem;
+      background: var(--cream);
+      border: 1.5px solid rgba(82,183,136,0.3);
+      border-radius: var(--radius-sm);
+    }
+    .emoji-btn {
+      font-size: 1.4rem;
+      padding: 0.3rem;
+      border: 2px solid transparent;
+      border-radius: var(--radius-sm);
+      background: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      line-height: 1;
+    }
+    .emoji-btn:hover { background: var(--green-pale); transform: scale(1.15); }
+    .emoji-btn.selected {
+      border-color: var(--green-mid);
+      background: var(--green-pale);
+      transform: scale(1.1);
+    }
+    .emoji-preview-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+    }
+    #emojiPreview {
+      font-size: 2.8rem;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+    /* Success state */
+    #successSection {
+      display: none;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .success-icon { font-size: 5rem; margin-bottom: 1.5rem; }
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--green-dark);
+      margin-bottom: 0.8rem;
+    }
+    .success-sub { color: var(--text-mid); margin-bottom: 2rem; }
+    .success-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="../index.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit;">
+        <span class="leaf-icon">🌿</span>
+        <span class="brand-name">GreenPlate</span>
+      </a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="explore.html">Explore</a></li>
+      <li><a href="submit.html" class="active">Share Recipe</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Share Your Recipe</h1>
+    <p>Help the GreenPlate community eat more sustainably. Your recipe will be visible to everyone.</p>
+  </div>
+
+  <!-- FORM SECTION -->
+  <div class="form-section" id="formSection">
+    <div class="form-card">
+
+      <form id="recipeForm" novalidate>
+
+        <!-- BASIC INFO -->
+        <div class="form-section-title">🌿 Basic Info</div>
+        <div class="form-grid">
+
+          <div class="form-group full-width">
+            <label class="form-label" for="recipeTitle">Recipe Title *</label>
+            <input type="text" id="recipeTitle" class="form-input"
+              placeholder="e.g. Golden Turmeric Buddha Bowl"
+              required maxlength="100" autocomplete="off"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipeCategory">Category *</label>
+            <select id="recipeCategory" class="form-select" required>
+              <option value="">Select category</option>
+              <option value="breakfast">🌅 Breakfast</option>
+              <option value="lunch">🥙 Lunch</option>
+              <option value="dinner">🍲 Dinner</option>
+              <option value="snacks">🍎 Snacks</option>
+              <option value="desserts">🍰 Desserts</option>
+              <option value="drinks">🥤 Drinks</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipeDifficulty">Difficulty *</label>
+            <select id="recipeDifficulty" class="form-select" required>
+              <option value="">Select level</option>
+              <option value="easy">🟢 Easy</option>
+              <option value="medium">🟡 Medium</option>
+              <option value="hard">🔴 Hard</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipePrepTime">Prep Time (min)</label>
+            <input type="number" id="recipePrepTime" class="form-input"
+              placeholder="15" min="0" max="999"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipeCookTime">Cook Time (min)</label>
+            <input type="number" id="recipeCookTime" class="form-input"
+              placeholder="30" min="0" max="999"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipeServings">Servings</label>
+            <input type="number" id="recipeServings" class="form-input"
+              placeholder="4" min="1" max="50"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="recipeAuthor">Your Name</label>
+            <input type="text" id="recipeAuthor" class="form-input"
+              placeholder="Your name (or leave blank)" maxlength="60"/>
+          </div>
+
+        </div>
+
+        <hr class="form-divider"/>
+
+        <!-- EMOJI PICKER -->
+        <div class="form-section-title">🎨 Pick a Recipe Emoji</div>
+        <div class="emoji-preview-wrap">
+          <span id="emojiPreview">🥗</span>
+          <span style="font-size:.85rem;color:var(--text-light);">← will appear on your recipe card</span>
+        </div>
+        <div class="emoji-picker" id="emojiPicker"></div>
+        <input type="hidden" id="recipeEmoji" value="🥗"/>
+
+        <hr class="form-divider"/>
+
+        <!-- DESCRIPTION -->
+        <div class="form-section-title">📝 About Your Recipe</div>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="recipeDescription">Short Description *</label>
+            <textarea id="recipeDescription" class="form-textarea" required
+              placeholder="A brief, appetising description of your recipe..."
+              maxlength="200"></textarea>
+            <span class="form-hint" id="recipeDescriptionCount">0 / 200</span>
+          </div>
+        </div>
+
+        <hr class="form-divider"/>
+
+        <!-- INGREDIENTS & STEPS -->
+        <div class="form-section-title">🛒 Ingredients & Steps</div>
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label" for="recipeIngredients">Ingredients * <span style="font-weight:300;text-transform:none;">(one per line)</span></label>
+            <textarea id="recipeIngredients" class="form-textarea tall" required
+              placeholder="1 cup basmati rice&#10;1 tsp turmeric&#10;1 can chickpeas, drained&#10;..."
+              maxlength="1000"></textarea>
+            <span class="form-hint" id="recipeIngredientsCount">0 / 1000</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="recipeSteps">Instructions * <span style="font-weight:300;text-transform:none;">(numbered steps)</span></label>
+            <textarea id="recipeSteps" class="form-textarea tall" required
+              placeholder="1. Rinse and cook rice with turmeric...&#10;2. Roast chickpeas at 200°C for 25 min...&#10;3. Assemble bowls and drizzle dressing."
+              maxlength="2000"></textarea>
+            <span class="form-hint" id="recipeStepsCount">0 / 2000</span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label" for="recipeTags">Tags <span style="font-weight:300;text-transform:none;">(comma separated)</span></label>
+            <input type="text" id="recipeTags" class="form-input"
+              placeholder="gluten-free, high-protein, quick, comfort food"/>
+            <span class="form-hint">Help others discover your recipe via tags.</span>
+          </div>
+        </div>
+
+        <hr class="form-divider"/>
+
+        <button type="submit" class="form-submit-btn">
+          🌱 Submit Recipe
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- SUCCESS STATE -->
+  <div class="form-section" id="successSection">
+    <div class="success-icon">🎉</div>
+    <h2 class="success-title" id="successTitle">Your recipe is now live!</h2>
+    <p class="success-sub">Thank you for contributing to the GreenPlate community. Every plant-based meal makes a difference.</p>
+    <div class="success-actions">
+      <a href="explore.html" class="btn btn-primary">Browse All Recipes</a>
+      <a href="submit.html" class="btn btn-outline" onclick="location.reload(); return false;">Add Another</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">🌿 GreenPlate</span>
+        <p>Eat sustainably. Live beautifully.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="submit.html">Share</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 GreenPlate.</p>
+  </footer>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/submit.js"></script>
+</body>
+</html>

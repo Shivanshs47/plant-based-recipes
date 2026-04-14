@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GreenPlate — Plant-Based Recipe Hub</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="leaf-icon">🌿</span>
+      <span class="brand-name">GreenPlate</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="pages/explore.html">Explore</a></li>
+      <li><a href="pages/submit.html">Share Recipe</a></li>
+      <li><a href="pages/about.html">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-circles">
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+      <div class="circle c3"></div>
+    </div>
+    <div class="hero-content">
+      <span class="hero-tag">🌱 Sustainable Eating</span>
+      <h1 class="hero-title">Cook Green.<br/><em>Eat Better.</em><br/>Share More.</h1>
+      <p class="hero-sub">Discover and share plant-based recipes that are good for you and the planet. Every meal is a choice. Make it count.</p>
+      <div class="hero-btns">
+        <a href="pages/explore.html" class="btn btn-primary">Explore Recipes</a>
+        <a href="pages/submit.html" class="btn btn-outline">Share Yours</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hcard hcard-1">🥑 Avocado Toast</div>
+        <div class="hcard hcard-2">🍜 Miso Ramen</div>
+        <div class="hcard hcard-3">🥗 Buddha Bowl</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num" id="statRecipes">0</span>
+      <span class="stat-label">Recipes Shared</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Plant-Based</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">🌍</span>
+      <span class="stat-label">Eco-Friendly</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num" id="statCategories">6</span>
+      <span class="stat-label">Categories</span>
+    </div>
+  </section>
+
+  <!-- FEATURED RECIPES -->
+  <section class="section featured-section">
+    <div class="section-header">
+      <h2 class="section-title">Featured Recipes</h2>
+      <a href="pages/explore.html" class="see-all-link">See all →</a>
+    </div>
+    <div class="recipe-grid" id="featuredGrid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section categories-section">
+    <h2 class="section-title centered">Browse by Category</h2>
+    <div class="category-grid">
+      <a href="pages/explore.html?cat=breakfast" class="cat-card">
+        <span class="cat-icon">🌅</span>
+        <span class="cat-name">Breakfast</span>
+      </a>
+      <a href="pages/explore.html?cat=lunch" class="cat-card">
+        <span class="cat-icon">🥙</span>
+        <span class="cat-name">Lunch</span>
+      </a>
+      <a href="pages/explore.html?cat=dinner" class="cat-card">
+        <span class="cat-icon">🍲</span>
+        <span class="cat-name">Dinner</span>
+      </a>
+      <a href="pages/explore.html?cat=snacks" class="cat-card">
+        <span class="cat-icon">🍎</span>
+        <span class="cat-name">Snacks</span>
+      </a>
+      <a href="pages/explore.html?cat=desserts" class="cat-card">
+        <span class="cat-icon">🍰</span>
+        <span class="cat-name">Desserts</span>
+      </a>
+      <a href="pages/explore.html?cat=drinks" class="cat-card">
+        <span class="cat-icon">🥤</span>
+        <span class="cat-name">Drinks</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2>Have a Recipe to Share?</h2>
+      <p>Join the GreenPlate community and inspire others to eat sustainably.</p>
+      <a href="pages/submit.html" class="btn btn-white">Submit Your Recipe</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="leaf-icon">🌿</span>
+        <span class="brand-name">GreenPlate</span>
+        <p>Eat sustainably. Live beautifully.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="pages/explore.html">Explore</a>
+        <a href="pages/submit.html">Share</a>
+        <a href="pages/about.html">About</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 GreenPlate. All recipes belong to their creators.</p>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

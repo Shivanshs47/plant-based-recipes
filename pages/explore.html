@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Recipes — GreenPlate</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <a href="../index.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit;">
+        <span class="leaf-icon">🌿</span>
+        <span class="brand-name">GreenPlate</span>
+      </a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="explore.html" class="active">Explore</a></li>
+      <li><a href="submit.html">Share Recipe</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <h1>Explore Recipes</h1>
+    <p>Browse community-shared plant-based creations. Search, filter, and get inspired.</p>
+  </div>
+
+  <!-- SEARCH & FILTER BAR -->
+  <div class="filter-bar" role="search">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="Search recipes, ingredients, tags..."
+        aria-label="Search recipes"
+        autocomplete="off"
+      />
+    </div>
+
+    <select class="filter-select" id="catFilter" aria-label="Filter by category">
+      <option value="">All Categories</option>
+      <option value="breakfast">🌅 Breakfast</option>
+      <option value="lunch">🥙 Lunch</option>
+      <option value="dinner">🍲 Dinner</option>
+      <option value="snacks">🍎 Snacks</option>
+      <option value="desserts">🍰 Desserts</option>
+      <option value="drinks">🥤 Drinks</option>
+    </select>
+
+    <select class="filter-select" id="diffFilter" aria-label="Filter by difficulty">
+      <option value="">All Levels</option>
+      <option value="easy">🟢 Easy</option>
+      <option value="medium">🟡 Medium</option>
+      <option value="hard">🔴 Hard</option>
+    </select>
+
+    <button class="btn btn-outline btn-sm" id="clearFilters" aria-label="Clear all filters">
+      ✕ Clear
+    </button>
+  </div>
+
+  <!-- RESULTS META + GRID -->
+  <div class="section" style="padding-top:2.5rem;">
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:0.5rem;">
+      <p id="resultCount" style="font-size:.9rem; color:var(--text-light); font-weight:500;"></p>
+      <a href="submit.html" class="btn btn-primary btn-sm">+ Share a Recipe</a>
+    </div>
+
+    <div class="recipe-grid" id="recipeGrid">
+      <!-- Cards injected by explore.js -->
+      <div class="spinner"></div>
+    </div>
+
+    <div style="text-align:center; margin-top:2.5rem;">
+      <button class="btn btn-outline" id="loadMoreBtn" style="display:none;">
+        Load More Recipes
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-name">🌿 GreenPlate</span>
+        <p>Eat sustainably. Live beautifully.</p>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="explore.html">Explore</a>
+        <a href="submit.html">Share</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 GreenPlate.</p>
+  </footer>
+
+  <script src="../js/db.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/explore.js"></script>
+</body>
+</html>
